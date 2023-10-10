@@ -25,9 +25,5 @@ namespace ContactBookAPI.Model.Entities
 
         [Required]
         public UserRole UserRole { get; set; }
-
-        //[Required]
-        //[CustomValidation(typeof(ValidationHelper), "ValidatePasswordComplexity")]
-        //public string Password { get; set; }
     }
 }
