@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ContactBookAPI.Model.Enums;
+using Microsoft.AspNetCore.Identity;
 
 namespace ContactBookAPI.Model.Entities
 {
-    internal class UserRole
+    public class UserRole : IdentityRole
     {
+        public UserRole() 
+        { 
+            Id = Guid.NewGuid().ToString();
+        }
+        public DateTime DateCreated { get; set; } = DateTime.Now;
+        public DateTime DateUpdated { get; set; } = DateTime.Now;
+        public bool IsDreprecated { get; set; }
     }
 }

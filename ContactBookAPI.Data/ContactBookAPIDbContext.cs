@@ -4,24 +4,12 @@ using ContactBookAPI.Model.Entities;
 
 namespace ContactBookAPI.Data
 {
-    public class ContactBookAPIDbContext : IdentityDbContext<User>
+    public class ContactBookAPIDbContext : IdentityDbContext<User, UserRole, string>
     {
-        private readonly DbContextOptions _option;
-        public DbSet<Address> Addresses { get; set; }
+        public ContactBookAPIDbContext(DbContextOptions<ContactBookAPIDbContext> options) : base(options) { }
+
         public DbSet<Contact> Contacts { get; set; }
-
-        public ContactBookAPIDbContext()
-        {
-
-        }
-        public ContactBookAPIDbContext(DbContextOptions<ContactBookAPIDbContext> options) : base(options)
-        {
-            _option = options;
-        }
-
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            base.OnModelCreating(builder);
-        }
+        public DbSet<UserRole> UserRoles { get; set; }
+        public DbSet<Address> Addresses { get; set; }
     }
 }

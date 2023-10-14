@@ -1,29 +1,22 @@
-﻿using ContactBookAPI.Commons.Helpers;
-using ContactBookAPI.Model.Entities.Shared;
+﻿using ContactBookAPI.Model.Entities.Shared;
 using ContactBookAPI.Model.Enums;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ContactBookAPI.Model.Entities
 {
     public class Contact : BaseEntity
     {
         [Required]
-        [CustomValidation(typeof(ValidationHelper), "ValidateFirstnameLastnameCapitalized")]
         public string FirstName { get; set; }
-
         [Required]
-        [CustomValidation(typeof(ValidationHelper), "ValidateFirstnameLastnameCapitalized")]
         public string LastName { get; set; }
-
         [Required]
-        [CustomValidation(typeof(ValidationHelper), "ValidateEmailFormat")]
         public string Email { get; set; }
-
         public string PhotoUrl { get; set; }
-
         public Address Address { get; set; }
-
-        [Required]
-        public UserRole UserRole { get; set; }
+        [ForeignKey("UserId")]
+        public string UserId { get; set; } 
+        public User User { get; set; }
     }
 }

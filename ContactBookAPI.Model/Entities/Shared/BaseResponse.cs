@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ContactBookAPI.Model.Entities.Shared
+﻿namespace ContactBookAPI.Model.Entities.Shared
 {
-    internal class BaseResponse
+    public class BaseResponse<T>
     {
+        public bool IsSuccessful { get; set; }
+        public string Message { get; set; }
+        public T Data { get; set; }
+        public List<ErrorItem> Errors { get; set; }
+        public int ResponseCode { get; set; }
     }
+
+    public class ErrorItem 
+    {
+        public string Key { get; set; }
+        public List <String> ErrorMessages { get; set; } = new List<String>();
+    }  
 }

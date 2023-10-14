@@ -1,3 +1,6 @@
+using ContactBookAPI.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace ContactBookAPI
 {
     public class Program
@@ -12,6 +15,9 @@ namespace ContactBookAPI
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddDbContext<ContactBookAPIDbContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("Connection")));
 
             var app = builder.Build();
 
