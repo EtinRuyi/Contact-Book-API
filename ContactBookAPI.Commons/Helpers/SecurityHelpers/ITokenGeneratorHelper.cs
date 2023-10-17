@@ -4,6 +4,6 @@ namespace ContactBookAPI.Commons.Helpers.SecurityHelpers
 {
     public interface ITokenGeneratorHelper
     {
-        Task<string> GenerateToken(User user);
+        Task<string> GenerateTokenAsync(User user);
     }
 }

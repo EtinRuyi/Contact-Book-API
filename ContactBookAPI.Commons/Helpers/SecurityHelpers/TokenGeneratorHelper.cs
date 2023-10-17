@@ -13,7 +13,7 @@ namespace ContactBookAPI.Commons.Helpers.SecurityHelpers
             _configuration = configuration;
             _userManager = userManager;
         }
-        public Task<string> GenerateToken(User user)
+        public Task<string> GenerateTokenAsync(User user)
         {
             throw new NotImplementedException();
         }
