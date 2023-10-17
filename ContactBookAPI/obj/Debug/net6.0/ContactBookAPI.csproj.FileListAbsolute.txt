@@ -75,3 +75,7 @@ C:\Users\omoru\Desktop\ContactBookAPI\ContactBookAPI\obj\Debug\net6.0\refint\Con
 C:\Users\omoru\Desktop\ContactBookAPI\ContactBookAPI\obj\Debug\net6.0\ContactBookAPI.pdb
 C:\Users\omoru\Desktop\ContactBookAPI\ContactBookAPI\obj\Debug\net6.0\ContactBookAPI.genruntimeconfig.cache
 C:\Users\omoru\Desktop\ContactBookAPI\ContactBookAPI\obj\Debug\net6.0\ref\ContactBookAPI.dll
+C:\Users\omoru\Desktop\ContactBookAPI\ContactBookAPI\bin\Debug\net6.0\ContactBookAPI.Commons.dll
+C:\Users\omoru\Desktop\ContactBookAPI\ContactBookAPI\bin\Debug\net6.0\ContactBookAPI.Core.dll
+C:\Users\omoru\Desktop\ContactBookAPI\ContactBookAPI\bin\Debug\net6.0\ContactBookAPI.Core.pdb
+C:\Users\omoru\Desktop\ContactBookAPI\ContactBookAPI\bin\Debug\net6.0\ContactBookAPI.Commons.pdb

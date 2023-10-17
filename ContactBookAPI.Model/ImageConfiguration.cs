@@ -1,6 +1,6 @@
 ﻿namespace ContactBookAPI.Model
 {
-    public class CloudinarySetting
+    public class ImageConfiguration
     {
         public string CloudName { get; set; }
         public string ApiKey { get; set; }
