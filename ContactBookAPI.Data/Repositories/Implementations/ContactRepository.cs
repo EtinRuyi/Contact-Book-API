@@ -1,49 +1,88 @@
 ﻿using ContactBookAPI.Data.Repositories.Interface;
-using ContactBookAPI.Model.DTOs;
 using ContactBookAPI.Model.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace ContactBookAPI.Data.Repositories.Implementations
 {
     public class ContactRepository : IContactRepository
     {
-        public Task<bool> AddContactAsync(ContactDto contact)
+        private readonly ContactBookAPIDbContext _dbContext;
+        private readonly UserManager<User> _userManager;
+        public ContactRepository(ContactBookAPIDbContext dbContext, UserManager<User> userManager)
         {
-            throw new NotImplementedException();
+            _dbContext = dbContext;
+            _userManager = userManager;
+        }
+        public async Task<bool> AddContactAsync(Contact contact, string userId)
+        {
+            _dbContext.Contacts.Add(contact);
+            return await _dbContext.SaveChangesAsync() > 1;
         }
 
-        public Task DeleteContactAsyn(Contact contact)
+        public async Task DeleteContactAsyn(Contact contact)
         {
-            throw new NotImplementedException();
+            _dbContext.Contacts.Remove(contact);
+            await _dbContext.SaveChangesAsync();
         }
 
-        public Task<List<ContactDto>> GetAllContactAsync(PaginationFilterDto filter)
+        public async Task<Contact> GetContactByEmailAsync(string email)
         {
-            throw new NotImplementedException();
+            return await _dbContext.Contacts.FirstOrDefaultAsync(c => c.Email == email);
         }
 
-        public Task<Contact> GetByEmailAsync(string email)
+        public async Task<Contact> GetContactByIdAsync(int Id)
         {
-            throw new NotImplementedException();
+            return await _dbContext.Contacts.FindAsync(Id);
         }
 
-        public Task<Contact> GetContactByIdAsync(int Id)
+        public async Task<List<Contact>> GetAllContactAsync()
         {
-            throw new NotImplementedException();
+            return await _dbContext.Contacts.ToListAsync();
         }
 
-        public IQueryable<Contact> SearchContactAsync(string name, string state, string city)
+        public IQueryable<Contact> SearchContactAsync(string name, string address)
         {
-            throw new NotImplementedException();
+            var query = _dbContext.Contacts.AsQueryable();
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                query = query.Where(contact => contact.FirstName.Contains(name) || contact.LastName.Contains(name));
+            }
+
+            if (!string.IsNullOrEmpty(address))
+            {
+                query = query.Where(contact => contact.Address.City.Contains(address));
+            }
+            return query;
         }
 
-        public Task<bool> UpdateContactAsync(int Id, ContactDto contact)
+        public async Task<bool> UpdateContactAsync(int Id, Contact contact)
         {
-            throw new NotImplementedException();
+            var existingContact = await _dbContext.Contacts.FindAsync(Id);
+
+            if (existingContact != null)
+            {
+                existingContact.FirstName = contact.FirstName;
+                existingContact.LastName = contact.LastName;
+                existingContact.Email = contact.Email;
+
+                _dbContext.Contacts.Update(existingContact);
+                return await _dbContext.SaveChangesAsync() > 0;
+            }
+            return false;
         }
 
-        public Task UpdatePhotoAsyn(int Id, string photoUrl)
+        public async Task UpdatePhotoAsync(int Id, string photoUrl)
         {
-            throw new NotImplementedException();
+            var existingContact = await _dbContext.Contacts.FindAsync(Id);
+
+            if (existingContact != null)
+            {
+                existingContact.PhotoUrl = photoUrl;
+                _dbContext.Contacts.Update(existingContact);
+                await _dbContext.SaveChangesAsync();
+            }
         }
     }
 }

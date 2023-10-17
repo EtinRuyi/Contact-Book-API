@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "oU2kt2anjS5PuUObM8XsylIJSKnLsvu2+wD82ilw1casF2+CVcSSV0I66j2R61cRVQFfooM1JhKvitdtmrQAfA==",
+  "dgSpecHash": "fgGNRuCZ562tcd9odPPusf1JrRV+BZV3GJjZmAoaByq4ZtIwEFQtH2aydyvFKeP3pRTNXPfif8CAgW2pEhaCqg==",
   "success": true,
   "projectFilePath": "C:\\Users\\omoru\\Desktop\\ContactBookAPI\\ContactBookAPI.Model\\ContactBookAPI.Model.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\omoru\\.nuget\\packages\\fluentvalidation\\11.7.1\\fluentvalidation.11.7.1.nupkg.sha512",
     "C:\\Users\\omoru\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\omoru\\.nuget\\packages\\microsoft.aspnet.mvc\\5.2.9\\microsoft.aspnet.mvc.5.2.9.nupkg.sha512",
     "C:\\Users\\omoru\\.nuget\\packages\\microsoft.aspnet.razor\\3.2.9\\microsoft.aspnet.razor.3.2.9.nupkg.sha512",
