@@ -11,8 +11,9 @@ namespace ContactBookAPI.Data.Repositories.Interface
         Task<Contact> GetContactByIdAsync(int Id);
         Task<List<Contact>> GetAllContactAsync();
         IQueryable<Contact> SearchContactAsync(string name, string address);
-        Task<bool> UpdateContactAsync(int Id, Contact contact);
         Task UpdatePhotoAsync(int Id, string photoUrl);
         Task DeleteContactAsyn(Contact contact);
+
+        //Task<bool> UpdateContactAsync(int Id, Contact contact);
     }
 }

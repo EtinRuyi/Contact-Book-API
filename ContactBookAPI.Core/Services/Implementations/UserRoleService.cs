@@ -1,4 +1,4 @@
-﻿using ContactBookAPI.Commons.Helpers;
+﻿using ContactBookAPI.Commons.Helpers.UtilityHelpers;
 using ContactBookAPI.Core.Services.Interface;
 using ContactBookAPI.Model.DTOs;
 using ContactBookAPI.Model.Entities;

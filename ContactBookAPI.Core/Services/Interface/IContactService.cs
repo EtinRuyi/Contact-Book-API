@@ -13,5 +13,14 @@ namespace ContactBookAPI.Core.Services.Interface
         Task UpdatePhotoAsyn(int Id, string photoUrl);
         Task DeleteContactAsyn(Contact contact);
         IQueryable<Contact> SearchContactAsync(string name, string state, string city);
+
+
+        Task<bool> AddContactAsync(Contact contact, string userId);
+        Task<Contact> GetContactByEmailAsync(string email);
+        Task<Contact> GetContactByIdAsync(int Id);
+        Task<List<Contact>> GetAllContactAsync();
+        IQueryable<Contact> SearchContactAsync(string name, string address);
+        Task<bool> UpdateContactAsync(int Id, Contact contact);
+        Task DeleteContactAsyn(Contact contact);
     }
 }

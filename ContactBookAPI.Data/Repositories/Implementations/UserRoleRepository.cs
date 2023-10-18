@@ -7,7 +7,7 @@ namespace ContactBookAPI.Data.Repositories.Implementations
     public class UserRoleRepository : IUserRoleRepository
     {
         private readonly ContactBookAPIDbContext _dbContext;
-        public UserRoleRepository(ContactBookAPIDbContext dbContext) 
+        public UserRoleRepository(ContactBookAPIDbContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -35,4 +35,5 @@ namespace ContactBookAPI.Data.Repositories.Implementations
                 await _dbContext.SaveChangesAsync();
             }
         }
+    }
 }

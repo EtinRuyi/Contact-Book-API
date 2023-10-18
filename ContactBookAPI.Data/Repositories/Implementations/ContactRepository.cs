@@ -54,22 +54,6 @@ namespace ContactBookAPI.Data.Repositories.Implementations
             return query;
         }
 
-        public async Task<bool> UpdateContactAsync(int Id, Contact contact)
-        {
-            var existingContact = await _dbContext.Contacts.FindAsync(Id);
-
-            if (existingContact != null)
-            {
-                existingContact.FirstName = contact.FirstName;
-                existingContact.LastName = contact.LastName;
-                existingContact.Email = contact.Email;
-
-                _dbContext.Contacts.Update(existingContact);
-                return await _dbContext.SaveChangesAsync() > 0;
-            }
-            return false;
-        }
-
         public async Task UpdatePhotoAsync(int Id, string photoUrl)
         {
             var existingContact = await _dbContext.Contacts.FindAsync(Id);
@@ -81,5 +65,21 @@ namespace ContactBookAPI.Data.Repositories.Implementations
                 await _dbContext.SaveChangesAsync();
             }
         }
+
+        //public async Task<bool> UpdateContactAsync(int Id, Contact contact)
+        //{
+        //    var existingContact = await _dbContext.Contacts.FindAsync(Id);
+
+        //    if (existingContact != null)
+        //    {
+        //        existingContact.FirstName = contact.FirstName;
+        //        existingContact.LastName = contact.LastName;
+        //        existingContact.Email = contact.Email;
+
+        //        _dbContext.Contacts.Update(existingContact);
+        //        return await _dbContext.SaveChangesAsync() > 0;
+        //    }
+        //    return false;
+        //}
     }
 }
