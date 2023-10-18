@@ -1,6 +1,4 @@
-﻿using ContactBookAPI.Model.DTOs;
-using ContactBookAPI.Model.Entities;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
+﻿using ContactBookAPI.Model.Entities;
 
 namespace ContactBookAPI.Data.Repositories.Interface
 {

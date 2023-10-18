@@ -4,7 +4,7 @@ using ContactBookAPI.Model.Entities;
 
 namespace ContactBookAPI.Data
 {
-    public class ContactBookAPIDbContext : IdentityDbContext<User>
+    public class ContactBookAPIDbContext : IdentityDbContext<User, UserRole, string>
     {
         public ContactBookAPIDbContext(DbContextOptions<ContactBookAPIDbContext> options) : base(options) { }
 
