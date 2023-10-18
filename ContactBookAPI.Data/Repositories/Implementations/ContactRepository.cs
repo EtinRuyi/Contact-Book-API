@@ -1,6 +1,5 @@
 ﻿using ContactBookAPI.Data.Repositories.Interface;
 using ContactBookAPI.Model.Entities;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace ContactBookAPI.Data.Repositories.Implementations
@@ -8,15 +7,13 @@ namespace ContactBookAPI.Data.Repositories.Implementations
     public class ContactRepository : IContactRepository
     {
         private readonly ContactBookAPIDbContext _dbContext;
-        private readonly UserManager<User> _userManager;
-        public ContactRepository(ContactBookAPIDbContext dbContext, UserManager<User> userManager)
+        public ContactRepository(ContactBookAPIDbContext dbContext)
         {
             _dbContext = dbContext;
-            _userManager = userManager;
         }
         public async Task<bool> AddContactAsync(Contact contact, string userId)
         {
-            _dbContext.Contacts.Add(contact);
+            await _dbContext.Contacts.AddAsync(contact);
             return await _dbContext.SaveChangesAsync() > 1;
         }
 

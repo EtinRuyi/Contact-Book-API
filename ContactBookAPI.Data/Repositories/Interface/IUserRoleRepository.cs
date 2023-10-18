@@ -7,5 +7,6 @@ namespace ContactBookAPI.Data.Repositories.Interface
     {
         Task<BaseResponse<UserRoleToReturnDto>> AddUserRoleAsync(AddUserRoleDto addUserRoleDto);
         Task<BaseResponse<UserRoleToReturnDto>> UpdateUserRoleAsync(UpdateUserRoleDto updateUserRoleDto);
+        Task<BaseResponse<UserRoleToReturnDto>> DeleteUserRoleAsync(UpdateUserRoleDto updateUserRoleDto);
     }
 }

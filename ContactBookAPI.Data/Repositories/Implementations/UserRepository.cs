@@ -1,40 +1,70 @@
 ﻿using ContactBookAPI.Data.Repositories.Interface;
-using ContactBookAPI.Model.DTOs;
 using ContactBookAPI.Model.Entities;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.EntityFrameworkCore;
 
 namespace ContactBookAPI.Data.Repositories.Implementations
 {
     public class UserRepository : IUserRepository
     {
-        public Task<bool> CreateNewUserAsync(UserToAddDto model, ModelStateDictionary modelState)
+        private readonly ContactBookAPIDbContext _dbContext;
+        public UserRepository(ContactBookAPIDbContext dbContext)
         {
-            throw new NotImplementedException();
+            _dbContext = dbContext;
+        }
+        public async Task<User> CreateUserAsync(User user)
+        {
+            var result = await _dbContext.Users.AddAsync(user);
+            await _dbContext.SaveChangesAsync();
+
+            return result.Entity;
         }
 
-        public Task<bool> DeleteUserAsync(string userId)
+        public async Task DeleteUserAsync(string userId)
         {
-            throw new NotImplementedException();
+            var user = await _dbContext.Users.FirstOrDefaultAsync(u => u.Id == userId);
+
+            if (user != null)
+            {
+                _dbContext.Users.Remove(user);
+                await _dbContext.SaveChangesAsync();
+            }
         }
 
-        public Task<PaginationDto> GetAllUserAsync(int page, int pagesize)
+        public async Task<IEnumerable<User>> GetAllUsersAsync()
         {
-            throw new NotImplementedException();
+            return await _dbContext.Users.ToListAsync();
         }
 
-        public Task<User> GetUserByEmailAsync(string email)
+        public async Task<User> GetUserByEmailAsync(string email)
         {
-            throw new NotImplementedException();
+            return await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == email);
         }
 
-        public Task<User> GetUserByidAsync(string userId)
+        public async Task<User> GetUserByIdAsync(string userId)
         {
-            throw new NotImplementedException();
+            return await _dbContext.Users.FirstOrDefaultAsync(u => u.Id == userId);
         }
 
-        public Task<bool> UpdateUserAsync(string userId, UpdateUserDto model)
+        public async Task<IEnumerable<User>> SearchUsersAsync(string searchTerm)
         {
-            throw new NotImplementedException();
+            return await _dbContext.Users.Where(u => u.FirstName.Contains(searchTerm) || u.LastName.Contains(searchTerm)).ToListAsync();
+        }
+
+        public async Task<User> UpdateUserAsync(string userId, User updatedUser)
+        {
+            var existingUser = await _dbContext.Users.FirstOrDefaultAsync(u => u.Id == userId);
+
+            if (existingUser != null)
+            {
+                existingUser.FirstName = updatedUser.FirstName;
+                existingUser.LastName = updatedUser.LastName;
+                existingUser.Email = updatedUser.Email;
+                existingUser.PhoneNumber = updatedUser.PhoneNumber;
+
+                await _dbContext.SaveChangesAsync();
+            }
+
+            return existingUser;
         }
     }
 }

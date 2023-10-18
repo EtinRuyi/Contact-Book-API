@@ -6,11 +6,12 @@ namespace ContactBookAPI.Data.Repositories.Interface
 {
     public interface IUserRepository
     {
-        Task<bool> CreateNewUserAsync(UserToAddDto model, ModelStateDictionary modelState);
-        Task<bool> UpdateUserAsync(string userId, UpdateUserDto model);
-        Task<PaginationDto> GetAllUserAsync(int page, int pagesize);
-        Task<bool> DeleteUserAsync(string userId);
+        Task<User> CreateUserAsync(User user);
         Task<User> GetUserByIdAsync(string userId);
         Task<User> GetUserByEmailAsync(string email);
+        Task<IEnumerable<User>> GetAllUsersAsync();
+        Task<IEnumerable<User>> SearchUsersAsync(string searchTerm);
+        Task<User> UpdateUserAsync(string userId, User updatedUser);
+        Task DeleteUserAsync(string userId);
     }
 }
