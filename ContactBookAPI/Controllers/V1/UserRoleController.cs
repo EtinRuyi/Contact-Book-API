@@ -1,5 +1,5 @@
 ﻿using ContactBookAPI.Core.Services.Interface;
-using ContactBookAPI.Model.DTOs;
+using ContactBookAPI.Model.DTOs.UserRoleDto;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ContactBookAPI.Controllers.V1

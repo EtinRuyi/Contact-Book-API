@@ -1,4 +1,4 @@
-﻿namespace ContactBookAPI.Model.DTOs
+﻿namespace ContactBookAPI.Model.DTOs.UserDtos
 {
     public class UserToReturnDto
     {

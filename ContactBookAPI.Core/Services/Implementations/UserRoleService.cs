@@ -1,6 +1,7 @@
 ﻿using ContactBookAPI.Commons.Helpers.UtilityHelpers;
 using ContactBookAPI.Core.Services.Interface;
 using ContactBookAPI.Model.DTOs;
+using ContactBookAPI.Model.DTOs.UserRoleDto;
 using ContactBookAPI.Model.Entities;
 using ContactBookAPI.Model.Entities.Shared;
 using Microsoft.AspNetCore.Http;
