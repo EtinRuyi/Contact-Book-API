@@ -11,6 +11,7 @@ namespace ContactBookAPI.Core.Services.Implementations
     public class UserRoleService : IUserRoleService
     {
         private readonly RoleManager<UserRole> _roleManager;
+        private readonly UserRoleRepository _userRoleRepository;
         public UserRoleService(RoleManager<UserRole> roleManager)
         {
             _roleManager = roleManager;
@@ -50,6 +51,10 @@ namespace ContactBookAPI.Core.Services.Implementations
 
         }
 
+        public Task<BaseResponse<UserRoleToReturnDto>> DeleteUserRoleAsync(DeleteUserRoleDto deleteUserRoleDto)
+        {
+            throw new NotImplementedException();
+        }
 
         public async Task<BaseResponse<UserRoleToReturnDto>> UpdateUserRoleAsync(UpdateUserRoleDto updateUserRoleDto)
         {

@@ -1,16 +1,18 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ContactBookAPI.Model.DTOs
+namespace ContactBookAPI.Model.DTOs.UserDtos
 {
-    public class UpdateUserDto
+    public class UserToCreateDto
     {
         [Required]
-        public string PhoneNumber { get; set; }
-        [Required]
-        [EmailAddress]
-        public string Email { get; set; }
-        [Required]
         public string UserName { get; set; }
+
+        [Required]
+        public string Email { get; set; }
+
+        [Required]
+        [DataType(DataType.PhoneNumber)]
+        public string PhoneNumber { get; set; }
 
         [Required]
         [DataType(DataType.Password)]

@@ -10,7 +10,6 @@ namespace ContactBookAPI.Core.Services.Interface
         Task<Contact> GetByEmailAsync(string email);
         Task<bool> AddContactAsync(ContactDto contact);
         Task<bool> UpdateContactAsync(int Id, ContactDto contact);
-        Task UpdatePhotoAsyn(int Id, string photoUrl);
         Task DeleteContactAsyn(Contact contact);
         IQueryable<Contact> SearchContactAsync(string name, string state, string city);
 

@@ -11,29 +11,29 @@ namespace ContactBookAPI.Data.Repositories.Implementations
         {
             _dbContext = dbContext;
         }
-        public async Task<UserRole> AddUserRoleAsync(UserRole userRole)
-        {
-            var result = await _dbContext.UserRoles.AddAsync(userRole);
-            await _dbContext.SaveChangesAsync();
-            return result.Entity;
-        }
 
-        public async Task<UserRole> UpdateUserRoleAsync(UserRole userRole)
+        private async Task<bool> SaveChangesAsync() => await _dbContext.SaveChangesAsync() > 0;
+        public async Task<bool> AddUserRoleAsync(UserRole userRole)
+        {
+            await _dbContext.UserRoles.AddAsync(userRole);
+            return await SaveChangesAsync();
+        }
+        public async Task<bool> UpdateUserRoleAsync(UserRole userRole)
         {
             _dbContext.UserRoles.Update(userRole);
-            await _dbContext.SaveChangesAsync();
-            return userRole;
+            return await SaveChangesAsync();
         }
-
-        public async Task DeleteUserRoleAsync(string roleId)
+        public async Task<bool> DeleteUserRoleAsync(string roleId)
         {
             var userRole = await _dbContext.UserRoles.FirstOrDefaultAsync(ur => ur.Id == roleId);
 
             if (userRole != null)
             {
                 _dbContext.UserRoles.Remove(userRole);
-                await _dbContext.SaveChangesAsync();
+                return await SaveChangesAsync();
             }
+
+            return false;
         }
     }
 }
