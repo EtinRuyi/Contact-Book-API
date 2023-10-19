@@ -5,5 +5,6 @@ namespace ContactBookAPI.Model.DTOs.UserRoleDto
     public class UpdateUserRoleDto
     {
         public UserRoleType NewRoleName { get; set; }
+        public string UserRoleId { get; set; }
     }
 }

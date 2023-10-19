@@ -1,4 +1,4 @@
-﻿namespace ContactBookAPI.Model.DTOs
+﻿namespace ContactBookAPI.Model.DTOs.UserRoleDto
 {
     public class UserRoleToReturnDto
     {

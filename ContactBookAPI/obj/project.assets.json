@@ -1994,6 +1994,7 @@
         "dependencies": {
           "CloudinaryDotNet": "1.22.0",
           "ContactBookAPI.Commons": "1.0.0",
+          "ContactBookAPI.Data": "1.0.0",
           "ContactBookAPI.Model": "1.0.0",
           "FluentValidation": "11.7.1",
           "Microsoft.AspNet.Mvc": "5.2.9",
